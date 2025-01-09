@@ -16,7 +16,17 @@ const changeAvailability = async (req,res) => {
         console.log(error)
       res.json({success:false,message:error.message})
     }
-
-
 }
-export {changeAvailability}
+
+const herbalistList = async ( req,res) => {
+    try {
+        
+        const herbalists = await herbalistModel.find({}).select(['-password','-email'])
+        res.json({success:true,herbalists})
+
+    } catch (error) {
+        console.log(error)
+        res.json({success:false,message:error.message})
+    }
+}
+export {changeAvailability,herbalistList}

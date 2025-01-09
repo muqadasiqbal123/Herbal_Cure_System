@@ -9,20 +9,20 @@ const Herbalists = () => {
   const[showFilter, setShowFilter] = useState(false)
   const navigate = useNavigate()
 
-  const { Herbalists } = useContext(AppContext)
+  const { herbalists } = useContext(AppContext)
 
 
   const applyFilter = () => {
     if(speciality) {
-      setFilterherb( Herbalists.filter(herb => herb.speciality === speciality))
+      setFilterherb( herbalists.filter(herb => herb.speciality === speciality))
     }else{
-      setFilterherb(Herbalists)
+      setFilterherb(herbalists)
     }
   }
 
   useEffect(()=>{
     applyFilter()
-  },[Herbalists,speciality])
+  },[herbalists,speciality])
 
 
   return (

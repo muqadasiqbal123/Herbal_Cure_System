@@ -6,7 +6,7 @@ import RelatedHerbalists from '../Components/RelatedHerbalists'
 const Appointment = () => {
 
     const {herbID} = useParams()
-    const {Herbalists, currencysymbol} =useContext(AppContext)
+    const {herbalists, currencysymbol} =useContext(AppContext)
     const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'] 
 
      const [herbInfo, setHerbInfo] = useState(null)
@@ -15,7 +15,7 @@ const Appointment = () => {
      const [slotTime, setSlotTime] =useState('')
 
     const fetchHerbInfo = async () =>{
-        const herbInfo = Herbalists.find(herb => herb._id === herbID)
+        const herbInfo = herbalists.find(herb => herb._id === herbID)
         setHerbInfo(herbInfo)
     }
 
@@ -65,7 +65,7 @@ const Appointment = () => {
 
     useEffect(()=>{
         fetchHerbInfo()
-    },[Herbalists,herbID]) 
+    },[herbalists,herbID]) 
 
     useEffect(()=>{
     getAvailableSlots()

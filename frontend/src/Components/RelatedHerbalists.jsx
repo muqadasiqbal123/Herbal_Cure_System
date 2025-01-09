@@ -4,18 +4,18 @@ import { useNavigate } from 'react-router-dom'
 
 const RelatedHerbalists = ({speciality, herbID}) => {
 
-    const { Herbalists } = useContext(AppContext)
+    const { herbalists } = useContext(AppContext)
     const navigate = useNavigate
 
     const [relHerb, setRelHerbs] =useState([])
 
     useEffect(()=>{
-     if(Herbalists.length > 0 && speciality){
-        const herbalistsData = Herbalists.filter((herb)=> herb.speciality === speciality && herb._id !== herbID)
+     if(herbalists.length > 0 && speciality){
+        const herbalistsData = herbalists.filter((herb)=> herb.speciality === speciality && herb._id !== herbID)
         setRelHerbs(herbalistsData)
      }
 
-    },[Herbalists,speciality,herbID])
+    },[herbalists,speciality,herbID])
     
 
 
