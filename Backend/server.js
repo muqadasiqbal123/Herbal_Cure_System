@@ -11,9 +11,10 @@ const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
 
+
 // middlewares allow front-end connect with back-end
-app.use(express.json())
-app.use(cors())
+app.use(express.json())       // request pass using this method
+app.use(cors())            //allow to connect with front-end
 
 // api endpoints
 app.use('/api/admin',adminRouter)
