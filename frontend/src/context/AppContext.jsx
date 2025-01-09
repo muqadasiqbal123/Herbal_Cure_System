@@ -8,12 +8,11 @@ const AppContextProvider = (props) => {
 
     const currencysymbol ='$'
     const backendUrl = import.meta.env.VITE_BACKEND_URL
+
     const [herbalists, setHerbalists] = useState([])
+    // fetch token from local storage and use it in token state whenever we reload the page
+    const [token, setToken] = useState(localStorage.getItem('token')?localStorage.getItem('token'):false)
     
-    const value ={
-       herbalists, 
-       currencysymbol,
-    }
 
     const getHerbalistsData = async () => {
 
@@ -32,6 +31,12 @@ const AppContextProvider = (props) => {
             
         }
     }
+
+    const value ={
+        herbalists, 
+        currencysymbol,
+        token, setToken, backendUrl,
+     }
 
     useEffect(()=>{
     getHerbalistsData()
