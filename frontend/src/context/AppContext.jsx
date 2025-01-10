@@ -12,7 +12,7 @@ const AppContextProvider = (props) => {
     const [herbalists, setHerbalists] = useState([])
     // fetch token from local storage and use it in token state whenever we reload the page
     const [token, setToken] = useState(localStorage.getItem('token')?localStorage.getItem('token'):false)
-    
+    const [userData, setUserData] = useState(false);
 
     const getHerbalistsData = async () => {
 
@@ -32,15 +32,43 @@ const AppContextProvider = (props) => {
         }
     }
 
+    const loadUserProfileData = async () =>{
+
+        try {
+
+            const {data} = await axios.get(backendUrl + '/api/user/get-profile',{headers:{token}})
+            if (data.success) {
+                setUserData(data.userData)
+            } else {
+                toast.error(data.message) 
+            }
+            
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message) 
+        }
+
+    }
+//   use these functions in any component
     const value ={
-        herbalists, 
+        herbalists, getHerbalistsData,
         currencysymbol,
         token, setToken, backendUrl,
+        userData, setUserData,
+        loadUserProfileData,
      }
 
     useEffect(()=>{
     getHerbalistsData()
     },[])
+
+    useEffect(()=>{
+     if (token) {
+        loadUserProfileData()
+     }else{
+        setUserData(false)
+     }
+    },[token])
 
     return(
         <AppContext.Provider value={value}>

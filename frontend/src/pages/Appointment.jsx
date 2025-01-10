@@ -1,13 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 import RelatedHerbalists from '../Components/RelatedHerbalists'
+import { toast } from 'react-toastify'
+import axios from 'axios'
+
 const Appointment = () => {
 
     const {herbID} = useParams()
-    const {herbalists, currencysymbol} =useContext(AppContext)
+    const {herbalists, currencysymbol, backendUrl, token, getHerbalistsData} =useContext(AppContext)
     const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'] 
+
+    const navigate = useNavigate()
 
      const [herbInfo, setHerbInfo] = useState(null)
      const [herbSlots, setHerbSlots] =useState([])
@@ -18,6 +23,7 @@ const Appointment = () => {
         const herbInfo = herbalists.find(herb => herb._id === herbID)
         setHerbInfo(herbInfo)
     }
+    console.log(fetchHerbInfo); 
 
     const getAvailableSlots = async () =>{
         setHerbSlots([])
@@ -61,6 +67,44 @@ const Appointment = () => {
 
             setHerbSlots(prev => ([...prev, timeSlots]))
         }
+    }
+
+    // create arrow func with the name book appt
+    const bookAppointment = async () => {
+
+        if (!token) {
+            toast.warn('Login to book appointment')
+            return navigate('/login')
+        }
+
+        try {
+            
+            const date = herbSlots[slotIndex][0].datetime
+            // destructure the date we will store date, month, year in different variable
+            let day = date.getDate()
+            let month = date.getMonth()+1
+            let year = date.getFullYear()
+
+            const slotDate = day +"_" + month +"_" + year
+           
+            // Api call to book the appointment
+            
+ const { data } = await axios.post(backendUrl + '/api/user/book-appointment', {herbID, slotDate, slotTime }, {headers:{token}})
+            if (data.success) {
+                toast.success(data.message)
+                getHerbalistsData()
+                navigate('/my-appointments')
+            } else {
+
+                toast.error(data.message)
+
+            }
+
+        } catch (error) {
+            console.log(error)
+            toast.error(error.message)
+        }
+
     }
 
     useEffect(()=>{
@@ -124,7 +168,7 @@ const Appointment = () => {
                 </p>
             ))}
            </div>
-           <button className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book an Appointment</button>
+           <button onClick={bookAppointment} className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book an Appointment</button>
 
         </div>
         {/* ----------Listing Related Herbalists----------- */}
