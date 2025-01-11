@@ -54,12 +54,22 @@ const Appointment = () => {
 
             while(currentDate < endTime){
                 let formattedTime =  currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})
-                
-                // add slot to array
+                // if the time slot is booked in specific time and date then its hide
+                let day = currentDate.getDate()
+                let month = currentDate.getMonth() + 1
+                let year = currentDate.getFullYear()
+
+                const slotDate = day +"_" + month +"_" + year
+                const slotTime = formattedTime
+
+                const isSlotAvailable = herbInfo.slots_booked[slotDate] && herbInfo.slots_booked[slotDate].includes(slotTime) ? false : true
+                if (isSlotAvailable) {
+                   // add slot to array
                 timeSlots.push({
                     datetime: new Date(currentDate),
                     time: formattedTime
-                })
+                })  
+                }
 
                 //  Increment current time by 30 minutes
                 currentDate.setMinutes(currentDate.getMinutes() + 30)
@@ -151,7 +161,7 @@ const Appointment = () => {
         {/* ------Booking slots--------- */}
         <div className='sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700'>
            <p>Booking slots</p>  
-           <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
+           <div className='flex gap-3 items-center w-full  mt-4'>
             {
                 herbSlots.length && herbSlots.map((item,index)=>(
              <div onClick={()=> setSlotIndex(index)} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-gray-200'}`} key={index}>
