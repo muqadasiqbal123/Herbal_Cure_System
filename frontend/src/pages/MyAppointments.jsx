@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 
 const MyAppointments = () => {
 
-  const { backendUrl, token, getHerbalistsData } = useContext(AppContext)  //by using the we call api and display book appt
+const { backendUrl, token, getHerbalistsData } = useContext(AppContext)  //by using the we call api and display book appt
 
   const [appointments, setAppointments] = useState([])
   const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -51,6 +51,24 @@ const MyAppointments = () => {
 
   }
 
+  // // create arrow function to make payment of appointmnet
+  // const appointmentStripe = async (appointmentId) => {
+
+  //   try {
+      
+  //     const {data} = await axios.post(backendUrl + '/api/user/payment-stripe',{appointmentId},{headers:{token}})
+
+  //     if (data.success) {
+  //       console.log(data.order);
+        
+  //     }
+
+  //   } catch (error) {
+      
+  //   }
+
+  // }
+
   useEffect(()=>{
     if (token) {
       getUserAppointments()
@@ -83,11 +101,12 @@ const MyAppointments = () => {
          </div>
       ))}
       </div>
-    </div>
+    </div> 
   )
 }
 
 export default MyAppointments
+
 
 
 

@@ -3,6 +3,10 @@ import bcrypt from 'bcrypt'
 import { v2 as cloudinary } from 'cloudinary'
 import herbalistModel from '../models/herbalistmodel.js'
 import jwt from 'jsonwebtoken'
+import appointmentModel from '../models/appointmentModel.js'
+import userModel from '../models/userModel.js'
+
+
 //  API for adding Herbalists
 const addHerbalist = async (req,res) => {
 
@@ -90,7 +94,76 @@ const allHerbalists = async (req,res) => {
       res.json({success:false,message:error.message})
    }
 }
-export {addHerbalist, loginAdmin, allHerbalists}
+
+// Api to get all appointments list
+const appointmentsAdmin = async (req, res) => {
+   try {
+      
+      const appointments = await appointmentModel.find({})
+      res.json({success:true,appointments})
+
+   } catch (error) {
+      console.log(error)
+      res.json({success:false,message:error.message})
+   }
+}
+
+// API for appointment cancellation 
+const appointmentCancel = async (req, res) => {
+
+   try {
+       
+       const {appointmentId} = req.body
+
+       const appointmentData = await appointmentModel.findById(appointmentId)
+
+
+       await appointmentModel.findByIdAndUpdate(appointmentId, {cancelled:true})
+
+       // releasing herbalist slot
+
+       const {herbID, slotDate, slotTime} = appointmentData
+
+       const herbalistData = await herbalistModel.findById(herbID)
+
+       let slots_booked = herbalistData.slots_booked
+
+       slots_booked[slotDate] = slots_booked[slotDate].filter(e => e !== slotTime)
+
+       await herbalistModel.findByIdAndUpdate(herbID, {slots_booked})
+
+       res.json({success:true, message:'Appointment Cancelled'})
+
+   } catch (error) {
+       console.log(error)
+       res.json({success:false,message:error.message}) 
+   }
+
+}
+// API to get dashboard data for admin Panel
+const adminDashboard = async (req,res) => {
+   try {
+      
+      const herbalists = await herbalistModel.find({})
+      const users = await userModel.find({})
+      const appointments = await appointmentModel.find({})
+
+      const dashData = {
+         herbalists: herbalists.length,
+         appointments: appointments.length,
+         patients: users.length,
+         latestAppointments: appointments.reverse().slice(0,5)
+      }
+
+      res.json({success:true,dashData})
+
+   } catch (error) {
+      console.log(error)
+       res.json({success:false,message:error.message}) 
+   }
+}
+
+export {addHerbalist, loginAdmin, allHerbalists, appointmentsAdmin , appointmentCancel, adminDashboard}
 
 
 
