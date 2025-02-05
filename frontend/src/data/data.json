@@ -1,0 +1,279 @@
+[
+    {
+        "name": "Acne",
+        "introduction": "Acne, most commonly known as acne vulgaris, is a condition in which whiteheads, blackheads, and pimples appear on your skin. Mostly they occur on your face. However, they can also occur on your back, shoulders, arms, and chest. It occurs mostly in teenagers but can also affect people of other age groups. For treatment, mostly topical ones help in getting rid of it. Also, it may get better once the triggers are removed. Acne can also leave marks and scars on your skin if you treat them harshly. However, if you remain gentle to them, do not press them, they may go away on their own. Acne occurs mostly due to the clogging of pores due to dust, dirt, or bacteria. It can be accompanied by whiteheads, blackheads, and pimples.",
+        "subline": "If you have a complaint of acne, visit the dermatologist. Side by side with the medical treatment, you can also try home remedies that can help you to get rid of it by balancing the pH and oils of your skin.",
+        "symptoms": {
+            "des": "The symptoms of acne may vary from person to person. For some, they may be severe, while for some, they are not. Acne vulgaris may show the following signs and symptoms",
+            "points": [
+                "Closed clogged pores - whiteheads",
+                "Open clogged pores - blackheads",
+                "Papules - small red tender bumps",
+                "Pimples - pustules filled with pus",
+                "Nodules - large solid pus-filled lumps under the skin",
+                "Cystic lesions - painful lumps filled with pus under the skin"
+            ]
+        },
+        "risk_factors": [
+            "Hormonal changes",
+            "Excess oil production",
+            "Clogged pores",
+            "Bacterial infection",
+            "Poor diet or stress"
+        ],
+        "worse_factors": [
+            {
+                "point": "Stress",
+                "description": "Stress can worsen acne but does not directly cause it."
+            },
+            {
+                "point": "Hormonal Change",
+                "description": "Androgens surge in boys and girls at puberty, which eventually leads to increased sebum production, may cause acne. Therefore, it is common in teenagers. Furthermore, in women it may also occur due to contraceptive use or pregnancy as they alter the hormone levels."
+            },
+            {
+                "point": "Diet",
+                "description": "Processed foods and high-fat diets can contribute to worsening acne."
+            },
+            {
+                "point": "Medicines",
+                "description": "Certain medications like corticosteroids, lithium, or hormonal drugs can worsen or exacerbate acne."
+            }
+        ],
+        "treatment": [
+            "Aloe Vera Gel - Apply directly to soothe and reduce inflammation.",
+            "Tea Tree Oil - Mix with carrier oil and apply for antibacterial benefits.",
+            "Honey and Cinnamon Mask - Apply as an antimicrobial treatment.",
+            "Green Tea - Use as a toner to reduce sebum production."
+        ],
+        "faqs":[
+            {
+                "question":"What is acne meaning in Urdu?",
+                "answer":"Acne meaning in Urdu is Mahasey (مہاسے)."
+            },
+            {
+                "question":"What is the main cause of acne?",
+                "answer":"The main cause of acne is a surge in hormones called androgens..."
+            },
+            {
+                "question":"How do I remove acne?",
+                "answer":"There are several ways to remove acne, depending on its severity..."
+            }
+        ],
+        "herbalists_recommended":[
+            {
+                "img":"",
+                "name":"Dr. Sana Khan",
+                "designation":"Dermatologist",
+                "exp":"11 years"
+            },
+            {
+                "img":"",
+                "name":"Dr. Sana Khan",
+                "designation":"Dermatologist",
+                "exp":"11 years"
+            },
+            {
+                "img":"",
+                "name":"Dr. Sana Khan",
+                "designation":"Dermatologist",
+                "exp":"11 years"
+            },
+            {
+                "img":"",
+                "name":"Dr. Sana Khan",
+                "designation":"Dermatologist",
+                "exp":"11 years"
+            }
+        ]
+    },
+
+
+    {
+        "name": "Pimple",
+        "introduction": "A Pimple is a small papule or pustule that develops when sebaceous glands or oil glands become clogged and infected, eventually leading to red lesions filled with pus. If pimples occur repeatedly for a long time, the condition is called acne- most commonly known as acne vulgaris, is a condition in which whiteheads, blackheads, and pimples appear on your skin.",
+        "subline": "Pimple mostly occur on your face. However, they can also occur on your back, shoulders, arms, and chest. It occurs mostly in teenagers but can also affect people of other age groups. For treatment, mostly topical antibacterials help. Also, it may get better once the triggers are removed. Pimples can also leave marks and scars on your skin if you treat them harshly. However, if you remain gentle to them, do not press them, they may go away on their own. It occurs mostly due to the clogging of pores due to dust, dirt, or bacteria. Pimples can be accompanied by whiteheads, blackheads, and pustules. ",
+        "symptoms": {
+            "des": "Pimples, when occurring for a long time, can be called acne. The symptoms of acne may vary from person to person. For some, they may be severe, while for some, they are not. Acne vulgaris may show the following signs and symptoms",
+            "points": [
+                "Closed clogged pores - whiteheads",
+                "Open clogged pores - blackheads",
+                "Papules - small red tender bumps",
+                "Pimples - pustules filled with pus",
+                "Nodules - large solid pus-filled lumps under the skin",
+                "Cystic lesions - painful lumps filled with pus under the skin"
+            ]
+        },
+        "risk_factors": [
+            "The main causes for pimples are",
+            "Hair follicles that are clogged by oil and dead skin cells",
+            "Clogged pores",
+            "Bacterial infection",
+            "Inflammation due to various reasons"
+        ],
+        "worse_factors": [
+            {
+                "point": "Stress",
+                "description": "Stress can worsen acne but does not directly cause it."
+            },
+            {
+                "point": "Hormonal Change",
+                "description": "Androgens surge in boys and girls at puberty, which eventually leads to increased sebum production, may cause acne. Therefore, it is common in teenagers. Furthermore, in women it may also occur due to contraceptive use or pregnancy as they alter the hormone levels."
+            },
+            {
+                "point": "Diet",
+                "description": "Processed foods and high-fat diets can contribute to worsening acne."
+            },
+            {
+                "point": "Medicines",
+                "description": "Certain medications like corticosteroids, lithium, or hormonal drugs can worsen or exacerbate acne."
+            }
+        ],
+        "treatment": [
+            "Pimples are the most common skin problem people report to dermatologists. To keep your skin free from it, follow these tips",
+            "Aloe Vera Gel - Apply directly to soothe and reduce inflammation.",
+            "Tea Tree Oil - Mix with carrier oil and apply for antibacterial benefits.",
+            "Honey and Cinnamon Mask - Apply as an antimicrobial treatment.",
+            "Green Tea - Use as a toner to reduce sebum production.",
+            "Do not touch your pimples and face with dirty hands.",
+            "Before touching your face, wash your hands.",
+            "Do not eat oily fried foods.",
+            "Eat a diet rich in antioxidants like fruits, vegetables, and nuts.",
+            "Do not squeeze your pimples.",
+            "Keep yourself hydrated. Drink at least 10 to 12 glasses of water in a day."
+        ],
+        "faqs":[
+            {
+                "question":"What is pimple meaning in Urdu?",
+                "answer":"pimple meaning in Urdu is Mahasey (مہاسے)."
+            },
+            {
+                "question":"What is the main cause of pimple?",
+                "answer":"The main cause of pimple is a surge in hormones called androgens..."
+            },
+            {
+                "question":"How do I remove pimple?",
+                "answer":"There are several ways to remove pimple, depending on its severity..."
+            }
+        ],
+        "herbalists_recommended":[
+            {
+                "img":"",
+                "name":"Dr. Sana Khan",
+                "designation":"Dermatologist",
+                "exp":"11 years"
+            },
+            {
+                "img":"",
+                "name":"Dr. Hassan Roe",
+                "designation":"Dermatologist",
+                "exp":"9 years"
+            },
+            {
+                "img":"",
+                "name":"Dr. Fatimah Abbas",
+                "designation":"Dermatologist",
+                "exp":"6 years"
+            },
+            {
+                "img":"",
+                "name":"Dr. Alishba Javed",
+                "designation":"Dermatologist",
+                "exp":"8 years"
+            }
+        ]
+    },
+
+    {
+        "name": "Pimples",
+        "introduction": "Melasma is a common skin condition that causes dark, discolored patches, usually on the face. It is often referred to as the mask of pregnancy because it frequently affects pregnant women. Melasma occurs due to an overproduction of melanin, the pigment responsible for skin color. It is not harmful but can be a cosmetic concern for many individuals.",
+        "subline": "",
+        "symptoms": {
+            "des": "Melasma appears as brown, gray-brown, or tan patches on the skin, particularly in sun-exposed areas. Common locations include:",
+            "points": [
+                "Closed clogged pores - whiteheads",
+                "Open clogged pores - blackheads",
+                "Papules - small red tender bumps",
+                "Pimples - pustules filled with pus",
+                "Nodules - large solid pus-filled lumps under the skin",
+                "Cystic lesions - painful lumps filled with pus under the skin"
+            ]
+        },
+        "risk_factors": [
+            "Hormonal Changes - Hormone replacement therapy (HRT)",
+            "Sun Exposure - UV rays stimulate excess melanin production.",
+            "Skin Type - More common in medium to dark skin tones",
+            "Genetics"
+        ],
+        "worse_factors": [
+            {
+                "point": "Stress",
+                "description": "Stress can worsen acne but does not directly cause it."
+            },
+            {
+                "point": "Hormonal Change",
+                "description": "Androgens surge in boys and girls at puberty, which eventually leads to increased sebum production, may cause acne. Therefore, it is common in teenagers. Furthermore, in women it may also occur due to contraceptive use or pregnancy as they alter the hormone levels."
+            },
+            {
+                "point": "Diet",
+                "description": "Processed foods and high-fat diets can contribute to worsening acne."
+            },
+            {
+                "point": "Medicines",
+                "description": "Certain medications like corticosteroids, lithium, or hormonal drugs can worsen or exacerbate acne."
+            }
+        ],
+        "treatment": [
+            "Pimples are the most common skin problem people report to dermatologists. To keep your skin free from it, follow these tips",
+            "Aloe Vera Gel - Apply directly to soothe and reduce inflammation.",
+            "Tea Tree Oil - Mix with carrier oil and apply for antibacterial benefits.",
+            "Honey and Cinnamon Mask - Apply as an antimicrobial treatment.",
+            "Green Tea - Use as a toner to reduce sebum production.",
+            "Do not touch your pimples and face with dirty hands.",
+            "Before touching your face, wash your hands.",
+            "Do not eat oily fried foods.",
+            "Eat a diet rich in antioxidants like fruits, vegetables, and nuts.",
+            "Do not squeeze your pimples.",
+            "Keep yourself hydrated. Drink at least 10 to 12 glasses of water in a day."
+        ],
+        "faqs":[
+            {
+                "question":"What is pimple meaning in Urdu?",
+                "answer":"pimple meaning in Urdu is Mahasey (مہاسے)."
+            },
+            {
+                "question":"What is the main cause of pimples?",
+                "answer":"The main cause of pimples is a surge in hormones called androgens..."
+            },
+            {
+                "question":"How do I remove pimple?",
+                "answer":"There are several ways to remove pimple, depending on its severity..."
+            }
+        ],
+        "herbalists_recommended":[
+            {
+                "img":"",
+                "name":"Dr. Sana Khan",
+                "designation":"Dermatologist",
+                "exp":"11 years"
+            },
+            {
+                "img":"",
+                "name":"Dr. Hassan Roe",
+                "designation":"Dermatologist",
+                "exp":"9 years"
+            },
+            {
+                "img":"",
+                "name":"Dr. Fatimah Abbas",
+                "designation":"Dermatologist",
+                "exp":"6 years"
+            },
+            {
+                "img":"",
+                "name":"Dr. Alishba Javed",
+                "designation":"Dermatologist",
+                "exp":"8 years"
+            }
+        ]
+    }
+]

@@ -6,6 +6,7 @@ import connectCloudinary from './config/cloudinary.js'
 import adminRouter from './routes/adminRoute.js'
 import herbalistRouter from './routes/herbalistRoute.js'
 import userRouter from './routes/userRoute.js'
+import paymentRouter from './routes/paymentRouter.js'
 
 // app config
 const app = express()
@@ -21,7 +22,8 @@ app.use(cors())            //allow to connect with front-end
 // api endpoints
 app.use('/api/admin',adminRouter)
 app.use('/api/herbalist',herbalistRouter)
-app.use('/api/user',userRouter)
+app.use('/api/user',userRouter);
+app.use('/api/payment',paymentRouter);
 
 
 app.get('/',(req,res)=>{

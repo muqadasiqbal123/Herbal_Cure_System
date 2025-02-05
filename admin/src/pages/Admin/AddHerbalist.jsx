@@ -186,6 +186,9 @@ const AddHerbalist = () => {
                 name=""
                 id=""
               >
+                <option value="Herbalist 1">Herbalist 1</option>
+                <option value="Herbalist 2">Herbalist 2</option>
+                <option value="Herbalist 3">Herbalist 3</option>
                 <option value="General physician">General physician</option>
                 <option value="Dermatologist">Dermatologist</option>
                 <option value="Gynecologist">Gynecologist</option>

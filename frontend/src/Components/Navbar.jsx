@@ -27,7 +27,7 @@ const NavBar = () => {
             <li className='py-1'>Home</li>
             <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
         </NavLink>
-        <NavLink to ='/ViewCategories'>
+        <NavLink to ='/view-categories'>
             <li className='py-1'>ViewCategories</li>
             <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
         </NavLink>
