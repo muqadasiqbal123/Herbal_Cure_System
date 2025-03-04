@@ -5,7 +5,7 @@ const ViewCategories = () => {
   // const {diseases} = useParams()
   // const [filter, setFilter] = useState([])
   // const navigate = useNavigate()
-
+  const [searchQuery, setSearchQuery] = useState("");
   // const applyFilter = () =>{
   //   setFilter(filter)
   // }
@@ -13,6 +13,82 @@ const ViewCategories = () => {
   // useEffect(()=>{
   // applyFilter()
   // },[diseases])
+
+  // Create array of all diseases
+  const diseases = [
+    { name: "Acne", category: "Skin Disorder" },
+    { name: "Pimple", category: "Skin Disorder" },
+    { name: "Melasma", category: "Skin Disorder" },
+    { name: "Eczema", category: "Skin Disorder" },
+    { name: "Hyper-Pigmentation", category: "Skin Disorder" },
+    { name: "Dermatomyositis", category: "Skin Disorder" },
+    { name: "Psoriasis", category: "Skin Disorder" },
+    { name: "Lupus", category: "Skin Disorder" },
+    { name: "Sunstroke", category: "Skin Disorder" },
+    { name: "Rosacea", category: "Skin Disorder" },
+    { name: "Shingles", category: "Skin Disorder" },
+    // Add more diseases from other categories...
+    { name: "Alopecia", category: "Hair Issue" },
+    { name: "Dandruff", category: "Hair Issue" },
+    { name: "Premature-Graying", category: "Hair Issue" },
+    { name: "Scalp-Infection", category: "Hair Issue" },
+    { name: "Hair-Thining", category: "Hair Issue" },
+    { name: "Baldness", category: "Hair Issue" },
+    // Digestive Problem
+    { name: "Indigestion", category: "Digestive Problem" },
+    { name: "Constipation", category: "Digestive Problem" },
+    { name: "Diarrhea", category: "Digestive Problem" },
+    // Neurological Issue
+    { name: "Anxiety-Disorder", category: "Neurological Issue" },
+    { name: "Stress-Disorder", category: "Neurological Issue" },
+    { name: "Insomnia", category: "Neurological Issue" },
+    // Weight Management
+    { name: "Obesity", category: "Weight Management" },
+    { name: "WeightlossSupport", category: "Weight Management" },
+    // ENT Disorder
+    { name: "EarInfection", category: "ENT Disorder" },
+    { name: "Influenza", category: "ENT Disorder" },
+    { name: "Dysphagia", category: "ENT Disorder" },
+    { name: "SoreThroat", category: "ENT Disorder" },
+    { name: "Diphtheria", category: "ENT Disorder" },
+    // General Health Issues
+    { name: "WeakImmunity", category: "General Health Issues" },
+    { name: "Fatigue", category: "General Health Issues" },
+    { name: "Viral-Fever", category: "General Health Issues" },
+    { name: "Whooping-Cough", category: "General Health Issues" },
+    { name: "Typhoid", category: "General Health Issues" },
+    { name: "Back-Pain", category: "General Health Issues" },
+    { name: "Pneumonia", category: "General Health Issues" },
+    { name: "Chicken-Pox", category: "General Health Issues" },
+    { name: "Malaria", category: "General Health Issues" },
+    { name: "Cholera", category: "General Health Issues" },
+    { name: "Dengue-Fever", category: "General Health Issues" },
+    { name: "Khasra", category: "General Health Issues" },
+    { name: "Polio", category: "General Health Issues" },
+    // Nephrologist
+    { name: "High-Blood-Pressure", category: "Nephrologist" },
+    { name: "Kidney-Infection", category: "Nephrologist" },
+    { name: "Nephritis", category: "Nephrologist" },
+    // Gynecologist
+    { name: "Hormonal-Imbalance", category: "Gynecologist" },
+    { name: "Menstrual-Irregularities", category: "Gynecologist" },
+    { name: "Ovarian-Cancer", category: "Gynecologist" },
+    // ...add all other diseases with their categories
+  ];
+
+  // Filter diseases based on search query
+  const filteredDiseases = diseases.filter(disease =>
+    disease.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Group filtered diseases by category
+  const groupedDiseases = filteredDiseases.reduce((acc, disease) => {
+    if (!acc[disease.category]) {
+      acc[disease.category] = [];
+    }
+    acc[disease.category].push(disease);
+    return acc;
+  }, {});
 
   return (
     <div className="container mx-auto p-4">
@@ -35,362 +111,31 @@ const ViewCategories = () => {
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           placeholder="Type here to search any Diseases"
           autoComplete="off"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
       {/* Diseases */}
       <div className="diseases space-y-8">
-        <div className="disease-item">
-          {/* Section Title */}
-          <h2 className="text-2xl font-semibold mb-4">Skin Disorder</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* disease 1 */}
-            <div className="disease">
-              <a href="/view-categories/Acne">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Acne</label>
-                </div>
-              </a>
+        {Object.entries(groupedDiseases).map(([category, diseases]) => (
+          diseases.length > 0 && (
+            <div className="disease-item" key={category}>
+              <h2 className="text-2xl font-semibold mb-4">{category}</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {diseases.map((disease) => (
+                  <div className="disease" key={disease.name}>
+                    <a href={`/view-categories/${disease.name}`}>
+                      <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800">
+                        <label>{disease.name}</label>
+                      </div>
+                    </a>
+                  </div>
+                ))}
+              </div>
             </div>
-
-            {/* Disease 2 */}
-            <div className="disease">
-              <a href="/view-categories/Pimple">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Pimple</label>
-                  {/* <span className="text-indigo-500 material-icons">chevron_right</span> */}
-                </div>
-              </a>
-            </div>
-
-            {/* Disease 3 */}
-            <div className="disease">
-              <a href="/view-categories/Melasma">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Melasma</label>
-                </div>
-              </a>
-            </div>
-            {/* Disease 4 */}
-            <div className="disease">
-              <a href="/view-categories/Eczema">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Eczema</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 5 */}
-            <div className="disease">
-              <a href="/view-categories/Hyper-Pigmentation">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Hyper-Pigmentation</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 6 */}
-            <div className="disease">
-              <a href="/view-categories/Dry Skin">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Dry Skin</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 7 */}
-            <div className="disease">
-              <a href="/view-categories/Psoriasis">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Psoriasis</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 8*/}
-            <div className="disease">
-              <a href="/view-categories/Lupus">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Lupus</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 9 */}
-            <div className="disease">
-              <a href="/view-categories/Sunstroke ">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Sunstroke </label>
-                </div>
-              </a>
-            </div>
-            {/* disease 10 */}
-            <div className="disease">
-              <a href="/view-categories/Rosacea ">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Rosacea</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 10 */}
-            <div className="disease">
-              <a href="/view-categories/Shingles">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Shingles </label>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* -----------Hair Issue--------- */}
-        <div className="disease-item">
-          {/* Section Title */}
-          <h2 className="text-2xl font-semibold mb-4">Hair Issue</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Disease 1 */}
-            <div className="disease">
-              <a href="/view-categories/Alopecia">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800">
-                  <label>Alopecia</label>
-                </div>
-              </a>
-            </div>
-
-            {/* Disease 2 */}
-            <div className="disease">
-              <a href="/view-categories/Dandruff">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800">
-                  <label>Dandruff</label>
-                  {/* <span className="text-indigo-500 material-icons">chevron_right</span> */}
-                </div>
-              </a>
-            </div>
-
-            {/* Disease 2 */}
-            <div className="disease">
-              <a href="/ViewCategories/Premature-Graying">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800">
-                  <label>Premature-Graying</label>
-                  {/* <span className="text-indigo-500 material-icons">chevron_right</span> */}
-                </div>
-              </a>
-            </div>
-
-            {/* Disease 3 */}
-            <div className="disease">
-              <a href="/view-categories/Scalp Infection">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800">
-                  <label>Scalp Infection</label>
-                </div>
-              </a>
-            </div>
-            {/* Disease 4 */}
-            <div className="disease">
-              <a href="/view-categories/Hair Thining">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800">
-                  <label>Hair Thining</label>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* -----------Digestive Problem------------ */}
-
-        <div className="disease-item">
-          {/* Section Title */}
-          <h2 className="text-2xl font-semibold mb-4">Digestive Problem</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* disease 5 */}
-            <div className="disease">
-              <a href="/view-categories/Indigestion">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Indigestion</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 6 */}
-            <div className="disease">
-              <a href="/view-categories/Constipation">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Constipation</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 7 */}
-            <div className="disease">
-              <a href="/view-categories/Diarrhea">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Diarrhea</label>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* -----------Neurological Issue------------ */}
-
-        <div className="disease-item">
-          {/* Section Title */}
-          <h2 className="text-2xl font-semibold mb-4">Neurological Issue</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* disease 5 */}
-            <div className="disease">
-              <a href="/view-categories/ Anxiety Disorder">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Anxiety Disorder</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 6 */}
-            <div className="disease">
-              <a href="/view-categories/ Stress Disorder">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Stress Disorder</label>
-                </div>
-              </a>
-            </div>
-            {/* disease 7 */}
-            <div className="disease">
-              <a href="/view-categories/ Insomnia">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Insomnia</label>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* -----------Weight Management------------ */}
-
-        <div className="disease-item">
-          {/* Section Title */}
-          <h2 className="text-2xl font-semibold mb-4">Weight Management</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* disease 7 */}
-            <div className="disease">
-              <a href="/view-categories/Obesity">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Obesity</label>
-                </div>
-              </a>
-            </div>
-            <div className="disease">
-              <a href="/view-categories/Weight loss Support">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Weight loss Support</label>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* -----------ENT Disorder------------ */}
-
-        <div className="disease-item">
-          {/* Section Title */}
-          <h2 className="text-2xl font-semibold mb-4">ENT Disorder</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* disease 7 */}
-            <div className="disease">
-              <a href="/view-categories/Ear Infection">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Ear Infection</label>
-                </div>
-              </a>
-            </div>
-            <div className="disease">
-              <a href="/ViewCategories/Influenza">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Influenza</label>
-                </div>
-              </a>
-            </div>
-            <div className="disease">
-              <a href="/ViewCategories/Dysphagia">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Dysphagia</label>
-                </div>
-              </a>
-            </div>
-            <div className="disease">
-              <a href="/view-categories/Sore Throat">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Sore Throat</label>
-                </div>
-              </a>
-            </div>
-
-            <div className="disease">
-              <a href="/view-categories/Diphtheria">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Diphtheria</label>
-                </div>
-              </a>
-            </div>
-
-            <div className="disease">
-              <a href="/view-categories/Sinus Infection">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Sinus Infection</label>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* -----------General Health Issues------------ */}
-
-        <div className="disease-item">
-          {/* Section Title */}
-          <h2 className="text-2xl font-semibold mb-4">General Health Issues</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* disease 7 */}
-            <div className="disease">
-              <a href="/view-categories/Weak Immunity">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Weak Immunity</label>
-                </div>
-              </a>
-            </div>
-            <div className="disease">
-              <a href="/view-categories/Fatigue">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Fatigue</label>
-                </div>
-              </a>
-            </div>
-
-            <div className="disease">
-              <a href="/ViewCategories/High Blood Pressure">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>High Blood Pressure</label>
-                </div>
-              </a>
-            </div>
-
-            <div className="disease">
-              <a href="/view-categories/Hormonal-Imbalance">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Hormonal-Imbalance</label>
-                </div>
-              </a>
-            </div>
-
-            <div className="disease">
-              <a href="/view-categories/Menstrual-Irregularities">
-                <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800 ">
-                  <label>Menstrual-Irregularities</label>
-                </div>
-              </a>
-            </div>
-
-
-            
-          </div>
-        </div>
-
-
-
-
-
-
+          )
+        ))}
       </div>
     </div>
 
