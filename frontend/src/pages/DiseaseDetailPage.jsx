@@ -6,6 +6,10 @@ const DiseaseDetailPage = () => {
   const { disease } = useParams();
   const [diseaseDetail, setDiseaseDetails] = useState(null);
   console.log(disease, "disease");
+  const [herbalists, setHerbalists] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     // console.log(data,"data");
     const res = data.filter(
@@ -18,6 +22,41 @@ const DiseaseDetailPage = () => {
   }, [data]);
 
   console.log(diseaseDetail, "details");
+
+  // Fetch disease details and category
+  useEffect(() => {
+    const res = data.filter(
+      (d) => d.name.toLowerCase() === disease.toLowerCase()
+    );
+    if (res.length) {
+      setDiseaseDetails(res[0]);
+      fetchHerbalists(res[0].category);
+    }
+  }, [disease]);
+
+  // Fetch matching herbalists
+  const fetchHerbalists = async (category) => {
+    try {
+      const response = await fetch('http://localhost:4000/api/herbalist/list');
+      if (!response.ok) throw new Error('Failed to fetch herbalists');
+      
+      const herbalistData = await response.json();
+      console.log(herbalistData?.herbalists,"data")
+      const filteredHerbalists = herbalistData?.herbalists.filter(herbalist => 
+        herbalist.speciality?.includes(category)
+      );
+
+      console.log(filteredHerbalists,"filtered herbalists");
+      
+      
+      setHerbalists(filteredHerbalists);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <div className="container mx-auto p-4">
@@ -83,9 +122,7 @@ const DiseaseDetailPage = () => {
         {diseaseDetail?.worse_factors.map((factor) => (
           <>
             <h3 className="text-lg font-medium">{factor?.point}</h3>
-            <p className="mb-2">
-              {factor?.description}
-            </p>
+            <p className="mb-2">{factor?.description}</p>
           </>
         ))}
         {/* <h3 className="text-lg font-medium">Hormonal Change</h3>
@@ -106,12 +143,9 @@ const DiseaseDetailPage = () => {
         </p> */}
         <h2 className="text-xl font-semibold mb-2">Treatment</h2>
         <ul className="list-disc pl-6 mb-4">
-            {diseaseDetail?.treatment.map((treatment)=>(
-          <li>
-            {treatment}
-          </li>
-
-            ))}
+          {diseaseDetail?.treatment.map((treatment) => (
+            <li>{treatment}</li>
+          ))}
           {/* <li>
             Tea Tree Oil - Mix with carrier oil and apply for antibacterial
             benefits.
@@ -127,14 +161,11 @@ const DiseaseDetailPage = () => {
         <h2 className="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
       </div>
       <div className="mt-5 bg-white p-6 shadow-md rounded-lg">
-        {diseaseDetail?.faqs.map((faq)=>(
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold">
-            {faq?.question}
-          </h3>
-          <p>{faq.answer}</p>
-        </div>
-
+        {diseaseDetail?.faqs.map((faq) => (
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold">{faq?.question}</h3>
+            <p>{faq.answer}</p>
+          </div>
         ))}
         {/* <div className="mb-4">
           <h3 className="text-lg font-semibold">
@@ -153,42 +184,92 @@ const DiseaseDetailPage = () => {
       </div>
       {/*-------------------Doctors list----------------------- */}
       <div className="mt-5 ">
-        <h2 className="text-2xl font-bold mb-4">Doctor for {diseaseDetail?.name}</h2>
+        {/* <h2 className="text-2xl font-bold mb-4">
+          Doctor for {diseaseDetail?.name}
+        </h2> */}
       </div>
-      <div className="flex flex-wrap mt-5 gap-5 bg-white p-6 shadow-md rounded-lg">
-        {/* -------------1st Doctor------- */}
-          {diseaseDetail?.herbalists_recommended.map((rec)=>(
-        <div className="border p-4 rounded-lg w-[450px] shadow-md">
+      {/* <div className="flex flex-wrap mt-5 gap-5 bg-white p-6 shadow-md rounded-lg">
+        {diseaseDetail?.herbalists_recommended.map((rec) => (
+          <div className="border p-4 rounded-lg w-[450px] shadow-md">
             <div className="flex items-center gap-4">
-            {/* Doctor Image */}
-            <div className="h-20 w-20 rounded-full overflow-hidden">
-              <img
-                className="w-full h-full object-cover"
-                src="https://media.istockphoto.com/id/1442556244/photo/portrait-of-young-beautiful-woman-with-perfect-smooth-skin-isolated-over-white-background.jpg?s=612x612&w=0&k=20&c=4S7HufG4HDXznwuxFdliWndEAcWGKGvgqC45Ig0Zqog="
-                alt="Dr. Rajesh Kumar"
-              />
+              <div className="h-20 w-20 rounded-full overflow-hidden">
+                <img
+                  className="w-full h-full object-cover"
+                  src="https://media.istockphoto.com/id/1442556244/photo/portrait-of-young-beautiful-woman-with-perfect-smooth-skin-isolated-over-white-background.jpg?s=612x612&w=0&k=20&c=4S7HufG4HDXznwuxFdliWndEAcWGKGvgqC45Ig0Zqog="
+                  alt="Dr. Rajesh Kumar"
+                />
+              </div>
+              <div>
+                <p className="font-bold text-lg">{rec.name}</p>
+                <p className="text-gray-600">{rec.designation}</p>
+                <p className="text-gray-500">{rec.exp} </p>
+              </div>
+
+              <button className="ml-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-xl">
+                Book Appointment
+              </button>
             </div>
-            {/* Doctor Info */}
-            <div>
-              <p className="font-bold text-lg">{rec.name}</p>
-              <p className="text-gray-600">{rec.designation}</p>
-              <p className="text-gray-500">{rec.exp} </p>
-            </div>
-
-            {/* Appointment Button */}
-            <button className="ml-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-xl">
-              Book Appointment
-            </button>
           </div>
+        ))}
+       
+      </div> */}
+
+
+       {/* Recommended Herbalists Section */}
+       <div className="mt-8">
+        <h2 className="text-2xl font-semibold mb-4">Recommended Herbalists</h2>
+        
+        {loading && (
+          <div className="text-center py-4">
+            <p>Loading recommended herbalists...</p>
           </div>
-          ))}
-        {/* ----------------End first Doctor----------------- */}
+        )}
 
-        {/* -------------2nd Doctor------- */}
-       
+        {error && (
+          <div className="text-red-500 py-4">
+            <p>Error: {error}</p>
+          </div>
+        )}
 
-       
+        {!loading && !error && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {herbalists.length > 0 ? (
+              herbalists.map((herbalist) => (
+                <div key={herbalist._id} className=" flex items-center gap-4 border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="h-20 w-20 rounded-full overflow-hidden">
+                <img
+                  className="w-full h-full object-cover"
+                  src={herbalist?.image}
+                  alt="Dr. Rajesh Kumar"
+                />
+              </div>
+              <div>
+              <h3 className="font-semibold text-lg">{herbalist.name}</h3>
+                  <p className="text-gray-600">{herbalist.specialization}</p>
+                  <p className="text-sm text-gray-500 mt-2">{herbalist.experience} experience</p>
+                  <div className="mt-4 bg-blue-500 hover:bg-blue-600 rounded-xl py-2 px-4 cursor-pointer">
+                    <a 
+                      href={`/appointment/${herbalist._id}`}
+                      className="text-white"
+                    >
+                      Book appointment
+                    </a>
+                  </div>
+              </div>
+                  
+                </div>
+              ))
+            ) : (
+              <p className="col-span-3 text-center text-gray-500">
+                No herbalists found for {disease}
+              </p>
+            )}
+          </div>
+        )}
       </div>
+
+
+
     </div>
   );
 };

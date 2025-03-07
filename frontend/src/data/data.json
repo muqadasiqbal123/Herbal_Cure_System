@@ -1,6 +1,7 @@
 [
     {
         "name": "Acne",
+        "category":"Dermatologist",
         "introduction": "Acne, most commonly known as acne vulgaris, is a condition in which whiteheads, blackheads, and pimples appear on your skin. Mostly they occur on your face. However, they can also occur on your back, shoulders, arms, and chest. It occurs mostly in teenagers but can also affect people of other age groups. For treatment, mostly topical ones help in getting rid of it. Also, it may get better once the triggers are removed. Acne can also leave marks and scars on your skin if you treat them harshly. However, if you remain gentle to them, do not press them, they may go away on their own. Acne occurs mostly due to the clogging of pores due to dust, dirt, or bacteria. It can be accompanied by whiteheads, blackheads, and pimples.",
         "subline": "If you have a complaint of acne, visit the dermatologist. Side by side with the medical treatment, you can also try home remedies that can help you to get rid of it by balancing the pH and oils of your skin.",
         "symptoms": {
@@ -88,6 +89,7 @@
     },
     {
         "name": "Pimple",
+        "category":"Dermatologist",
         "introduction": "A Pimple is a small papule or pustule that develops when sebaceous glands or oil glands become clogged and infected, eventually leading to red lesions filled with pus. If pimples occur repeatedly for a long time, the condition is called acne- most commonly known as acne vulgaris, is a condition in which whiteheads, blackheads, and pimples appear on your skin.",
         "subline": "Pimple mostly occur on your face. However, they can also occur on your back, shoulders, arms, and chest. It occurs mostly in teenagers but can also affect people of other age groups. For treatment, mostly topical antibacterials help. Also, it may get better once the triggers are removed. Pimples can also leave marks and scars on your skin if you treat them harshly. However, if you remain gentle to them, do not press them, they may go away on their own. It occurs mostly due to the clogging of pores due to dust, dirt, or bacteria. Pimples can be accompanied by whiteheads, blackheads, and pustules. ",
         "symptoms": {
