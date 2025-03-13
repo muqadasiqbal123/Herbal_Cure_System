@@ -1,10 +1,19 @@
 import mongoose from "mongoose";
 
-const ChatSchema = new mongoose.Schema({
-  appointmentId: { type: mongoose.Schema.Types.ObjectId, ref: "Appointment" },
-  sender: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  message: String,
-  timestamp: { type: Date, default: Date.now },
-});
+const chatModel = mongoose.Schema(
+  {
+    chatName: { type: String, trim: true },
+    isGroupChat: { type: Boolean, default: false },
+    users: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    latestMessage: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Message",
+    },
+    groupAdmin: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model("Chat", ChatSchema);
+const Chat = mongoose.model("Chat", chatModel);
+
+export default Chat;

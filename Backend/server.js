@@ -7,6 +7,8 @@ import adminRouter from './routes/adminRoute.js'
 import herbalistRouter from './routes/herbalistRoute.js'
 import userRouter from './routes/userRoute.js'
 import paymentRouter from './routes/paymentRouter.js'
+import chatRoutes from './routes/chatRoutes.js'
+import messageRoutes from './routes/messageRoutes.js'
 // import chatRoutes from "./routes/chatRoutes.js";
 // import { Server } from "socket.io";
 // import { createServer } from "http";
@@ -29,6 +31,13 @@ app.use('/api/herbalist',herbalistRouter)
 app.use('/api/user',userRouter);
 app.use('/api/payment',paymentRouter);
 
+//chat routes
+
+app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
+
+
+//mock api
 
 app.get('/',(req,res)=>{
     res.send('API WORKING')
