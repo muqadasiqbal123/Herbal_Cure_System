@@ -16,6 +16,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Checkout from "./pages/Checkout";
 import DiseaseDetailPage from "./pages/DiseaseDetailPage";
+import ChatPage from "./pages/ChatPage";
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/chat" element={<ChatPage/>}/>
         <Route path="/herbalists" element={<Herbalists />} />
         <Route path="/herbalists/:speciality" element={<Herbalists />} />
         <Route path="/login" element={<Login />} />
