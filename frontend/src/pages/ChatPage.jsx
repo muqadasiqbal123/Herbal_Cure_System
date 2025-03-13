@@ -12,30 +12,30 @@ const ChatPage = () => {
   const [chats, setChats] = useState([]); // List of previous chats
   const [selectedChat, setSelectedChat] = useState(null);
 
-  useEffect(() => {
-    // Fetch all previous chats
-    axios.get(`/api/chat/appointments`).then((res) => {
-      setChats(res.data);
-    });
+//   useEffect(() => {
+//     // Fetch all previous chats
+//     axios.get(`/api/chat/appointments`).then((res) => {
+//       setChats(res.data);
+//     });
 
-    if (appointmentId) {
-      setSelectedChat(appointmentId);
-      socket.emit("joinRoom", { appointmentId });
+//     if (appointmentId) {
+//       setSelectedChat(appointmentId);
+//       socket.emit("joinRoom", { appointmentId });
 
-      // Fetch previous messages
-      axios.get(`/api/chat/${appointmentId}`).then((res) => {
-        setMessages(res.data.messages);
-      });
-    }
+//       // Fetch previous messages
+//       axios.get(`/api/chat/${appointmentId}`).then((res) => {
+//         setMessages(res.data.messages);
+//       });
+//     }
 
-    socket.on("receiveMessage", (msg) => {
-      setMessages((prev) => [...prev, msg]);
-    });
+//     socket.on("receiveMessage", (msg) => {
+//       setMessages((prev) => [...prev, msg]);
+//     });
 
-    return () => {
-      socket.off("receiveMessage");
-    };
-  }, [appointmentId]);
+//     return () => {
+//       socket.off("receiveMessage");
+//     };
+//   }, [appointmentId]);
 
   const sendMessage = () => {
     if (message.trim()) {
