@@ -1,4 +1,4 @@
-import herbalistModel from "../models/herbalistmodel.js"
+import herbalistModel from "../models/herbalistModel.js"
 import bcrypt from'bcrypt'
 import jwt from 'jsonwebtoken'
 import appointmentModel from "../models/appointmentModel.js"
@@ -187,6 +187,29 @@ const updateHerbalistProfile = async (req,res) => {
     }
 }
 
+// Get a single appointment by ID
+const getAppointmentById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const herbalistId = req.herbalistId;
+
+    // Find the appointment by ID and ensure it belongs to the requesting herbalist
+    const appointment = await appointmentModel.findOne({ 
+      _id: id,
+      herbID: herbalistId
+    });
+
+    if (!appointment) {
+      return res.status(404).json({ success: false, message: "Appointment not found" });
+    }
+
+    res.json({ success: true, appointment });
+  } catch (error) {
+    console.error("Error fetching appointment:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 export {
     changeAvailability,
     herbalistList,
@@ -197,4 +220,5 @@ export {
     herbalistDashboard,
     herbalistProfile,
     updateHerbalistProfile,
+    getAppointmentById,
 }

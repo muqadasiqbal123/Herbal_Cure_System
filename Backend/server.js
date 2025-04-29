@@ -7,9 +7,11 @@ import adminRouter from './routes/adminRoute.js'
 import herbalistRouter from './routes/herbalistRoute.js'
 import userRouter from './routes/userRoute.js'
 import paymentRouter from './routes/paymentRouter.js'
-// import chatRoutes from "./routes/chatRoutes.js";
-// import { Server } from "socket.io";
-// import { createServer } from "http";
+import chatRoutes from "./routes/chatRoutes.js"
+import { Server } from "socket.io"
+import { createServer } from "http"
+import ChatModel from './models/ChatModel.js'
+import appointmentModel from './models/appointmentModel.js'
 
 // app config
 const app = express()
@@ -17,76 +19,96 @@ const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
 
+// Create HTTP server
+const server = createServer(app)
+
+// Socket.io setup
+const io = new Server(server, {
+  cors: {
+    origin: "*", // Allow all origins (change this for production)
+    methods: ["GET", "POST"]
+  },
+})
 
 // middlewares allow front-end connect with back-end
 app.use(express.json())       // request pass using this method
 app.use(cors())            //allow to connect with front-end
 
 // api endpoints
-
-app.use('/api/admin',adminRouter)
-app.use('/api/herbalist',herbalistRouter)
-app.use('/api/user',userRouter);
-app.use('/api/payment',paymentRouter);
-
+app.use('/api/admin', adminRouter)
+app.use('/api/herbalist', herbalistRouter)
+app.use('/api/user', userRouter)
+app.use('/api/payment', paymentRouter)
+app.use('/api/chat', chatRoutes)
 
 app.get('/',(req,res)=>{
     res.send('API WORKING')
 })
 
-// Socket.io 
-// const app = express();
-// const server = createServer(app);
+// Socket.io connection handling
+io.on("connection", (socket) => {
+  console.log("A user connected:", socket.id)
 
-// const io = new Server(server, {
-//   cors: {
-//     origin: "*", // Allow all origins (change this for production)
-//   },
-// });
+  // Join a chat room based on appointment ID
+  socket.on("joinRoom", ({ appointmentId }) => {
+    socket.join(appointmentId)
+    console.log(`User joined room: ${appointmentId}`)
+  })
 
-// io.on("connection", (socket) => {
-//   console.log("A user connected:", socket.id);
+  // Handle sending messages
+  socket.on("sendMessage", async ({ appointmentId, senderId, senderName, senderRole, message }) => {
+    try {
+      // Save message to database
+      const newMessage = new ChatModel({ 
+        appointmentId, 
+        senderId, 
+        senderName, 
+        senderRole, 
+        message 
+      })
+      await newMessage.save()
+      
+      // Broadcast message to all users in the room
+      io.to(appointmentId).emit("receiveMessage", { 
+        _id: newMessage._id,
+        senderId, 
+        senderName, 
+        senderRole, 
+        message,
+        timestamp: newMessage.timestamp
+      })
+      
+      console.log(`Message sent in room ${appointmentId} by ${senderRole} ${senderName}`)
+    } catch (error) {
+      console.error("Error sending message:", error)
+      socket.emit("error", { message: "Failed to send message" })
+    }
+  })
 
-//   socket.on("joinRoom", ({ appointmentId }) => {
-//     socket.join(appointmentId);
-//   });
+  // Handle admin joining all rooms
+  socket.on("adminJoinAllRooms", async (adminData) => {
+    try {
+      // Get all active appointment IDs
+      const appointments = await appointmentModel.find({ 
+        payment: true,
+        cancelled: false
+      }).select('_id')
+      
+      // Join all appointment rooms
+      appointments.forEach(appointment => {
+        socket.join(appointment._id.toString())
+      })
+      
+      console.log(`Admin ${adminData.name} joined all chat rooms`)
+    } catch (error) {
+      console.error("Error joining admin to rooms:", error)
+    }
+  })
 
-//   socket.on("sendMessage", async ({ appointmentId, sender, message }) => {
-//     const newMessage = new ChatModel({ appointmentId, sender, message });
-//     await newMessage.save();
-//     io.to(appointmentId).emit("receiveMessage", { sender, message });
-//   });
+  socket.on("disconnect", () => {
+    console.log("User disconnected:", socket.id)
+  })
+})
 
-//   socket.on("disconnect", () => {
-//     console.log("User disconnected");
-//   });
-// });
-
-// Use chat routes
-// app.use("/api/chat", chatRoutes);
-
-// server.listen(5000, () => {
-//   console.log("Server is running on port 5000");
-// });
-
-
-// io.on("connection", (socket) => {
-//     console.log("A user connected:", socket.id);
-  
-//     socket.on("joinRoom", ({ appointmentId }) => {
-//       socket.join(appointmentId);
-//     });
-  
-//     socket.on("sendMessage", async ({ appointmentId, sender, message }) => {
-//       const newMessage = new ChatModel({ appointmentId, sender, message });
-//       await newMessage.save();
-//       io.to(appointmentId).emit("receiveMessage", { sender, message });
-//     });
-  
-//     socket.on("disconnect", () => {
-//       console.log("User disconnected");
-//     });
-//   });
-  
-
-app.listen(port, ()=> console.log("Server Started",port))
+// Start the server
+server.listen(port, () => console.log(`Server started on port ${port}`))

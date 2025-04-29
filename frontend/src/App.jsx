@@ -8,7 +8,6 @@ import Contact from "./pages/Contact";
 import MyProfile from "./pages/MyProfile";
 import Appointment from "./pages/Appointment";
 import MyAppointments from "./pages/MyAppointments";
-import NavBar from "./Components/NavBar";
 import ViewCategories from "./pages/ViewCategories";
 import Header from "./Components/header";
 import Footer from "./Components/Footer";
@@ -16,7 +15,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Checkout from "./pages/Checkout";
 import DiseaseDetailPage from "./pages/DiseaseDetailPage";
-
+import ChatPage from "./pages/ChatPage";
+import NavBar from "./Components/Navbar.jsx";
 
 const App = () => {
   return (
@@ -35,9 +35,13 @@ const App = () => {
         <Route path="/my-appointments" element={<MyAppointments />} />
         <Route path="/appointment/:herbID" element={<Appointment />} />
         <Route path="/view-categories" element={<ViewCategories />} />
-        <Route path="/view-categories/:disease" element={<DiseaseDetailPage/>} />
+        <Route
+          path="/view-categories/:disease"
+          element={<DiseaseDetailPage />}
+        />
         <Route path="/" element={<Header />} />
         <Route path="/checkout/:_id/:amount" element={<Checkout />} />
+        <Route path="/chat/:appointmentId" element={<ChatPage />} />
       </Routes>
 
       <Footer />

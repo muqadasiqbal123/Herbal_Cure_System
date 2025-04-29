@@ -14,6 +14,10 @@ import { HerbalistContext } from './context/HerbalistContext';
 import HerbalistDashboard from './pages/Herbalist/HerbalistDashboard';
 import HerbalistAppointments from './pages/Herbalist/HerbalistAppointments';
 import HerbalistProfile from './pages/Herbalist/HerbalistProfile';
+import AdminChats from './pages/Admin/AdminChats';
+import AdminChatRoom from './pages/Admin/AdminChatRoom';
+import HerbalistChats from './pages/Herbalist/HerbalistChats';
+import HerbalistChatRoom from './pages/Herbalist/HerbalistChatRoom';
 
 
 
@@ -35,11 +39,15 @@ const App = () => {
           <Route path = '/all-appointment' element={<AllAppointments/>} />
           <Route path = '/add-Herbalist' element={<AddHerbalist/>} />
           <Route path = '/herbalist-list' element={<HerbalistsList/>} />
+          <Route path = '/admin-chats' element={<AdminChats/>} />
+          <Route path = '/admin-chat/:appointmentId' element={<AdminChatRoom/>} />
 
           {/* Herbalist Route */}
           <Route path = '/herbalist-dashboard' element={<HerbalistDashboard/>} />
           <Route path = '/herbalist-appointments' element={<HerbalistAppointments/>} />
           <Route path = '/herbalist-profile' element={<HerbalistProfile/>} />
+          <Route path = '/herbalist-chats' element={<HerbalistChats/>} />
+          <Route path = '/herbalist-chat/:appointmentId' element={<HerbalistChatRoom/>} />
 
         </Routes>
       </div>

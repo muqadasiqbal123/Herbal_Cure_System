@@ -1,7 +1,7 @@
 import validator from 'validator'
 import bcrypt from 'bcrypt'
 import { v2 as cloudinary } from 'cloudinary'
-import herbalistModel from '../models/herbalistmodel.js'
+import herbalistModel from '../models/herbalistModel.js'
 import jwt from 'jsonwebtoken'
 import appointmentModel from '../models/appointmentModel.js'
 import userModel from '../models/userModel.js'
@@ -163,7 +163,26 @@ const adminDashboard = async (req,res) => {
    }
 }
 
-export {addHerbalist, loginAdmin, allHerbalists, appointmentsAdmin , appointmentCancel, adminDashboard}
+// Get a single appointment by ID
+const getAppointmentById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Admins can access any appointment
+    const appointment = await appointmentModel.findById(id);
+
+    if (!appointment) {
+      return res.status(404).json({ success: false, message: "Appointment not found" });
+    }
+
+    res.json({ success: true, appointment });
+  } catch (error) {
+    console.error("Error fetching appointment:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export {addHerbalist, loginAdmin, allHerbalists, appointmentsAdmin , appointmentCancel, adminDashboard, getAppointmentById}
 
 
 

@@ -1,5 +1,5 @@
 import express from 'express'
-import { herbalistList, loginHerbalist, appointmentHerbalist, appointmentCancel, appointmentComplete ,herbalistDashboard, herbalistProfile, updateHerbalistProfile} from '../controllers/herbalistController.js'
+import { herbalistList, loginHerbalist, appointmentHerbalist, appointmentCancel, appointmentComplete ,herbalistDashboard, herbalistProfile, updateHerbalistProfile, getAppointmentById} from '../controllers/herbalistController.js'
 import authHerbalist from '../middlewares/authHerbalist.js'
 
 const herbalistRouter = express.Router()
@@ -13,5 +13,6 @@ herbalistRouter.post('/cancel-appointment',authHerbalist,appointmentCancel)
 herbalistRouter.get('/dashboard',authHerbalist,herbalistDashboard)
 herbalistRouter.get('/profile',authHerbalist,herbalistProfile)
 herbalistRouter.post('/update-profile',authHerbalist,updateHerbalistProfile)
+herbalistRouter.get('/appointment/:id', authHerbalist, getAppointmentById)
 
 export default herbalistRouter
