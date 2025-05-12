@@ -35,6 +35,10 @@ const io = new Server(server, {
   },
 });
 
+app.get("/", (req, res) => {
+  res.send("Welcome to Herbal Cure System");
+});
+
 // middlewares allow front-end connect with back-end
 app.use(express.json()); // request pass using this method
 app.use(
