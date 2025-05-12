@@ -35,10 +35,6 @@ const io = new Server(server, {
   },
 });
 
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "Welcome to Herbal Cure System" });
-});
-
 // middlewares allow front-end connect with back-end
 app.use(express.json()); // request pass using this method
 app.use(
@@ -53,6 +49,10 @@ app.use(
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
 ); //allow to connect with front-end
+
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Welcome to Herbal Cure System" });
+});
 
 // api endpoints
 app.use("/api/admin", adminRouter);
