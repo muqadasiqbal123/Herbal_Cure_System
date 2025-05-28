@@ -178,7 +178,7 @@ const AddHerbalist = () => {
           {/* ---------Add herbalist detail for right side---------- */}
           <div className="w-full lg:flex-1 flex flex-col gap-4">
             <div className="flex-1 flex flex-col gap-1">
-              <p>Speciality</p>
+              <p>Specialization</p>
               <select
                 onChange={(e) => setSpeciality(e.target.value)}
                 value={speciality}
@@ -186,10 +186,16 @@ const AddHerbalist = () => {
                 name=""
                 id=""
               >
-                <option value="Herbalist 1">Herbalist 1</option>
-                <option value="Herbalist 2">Herbalist 2</option>
-                <option value="Herbalist 3">Herbalist 3</option>
-                <option value="General physician">General physician</option>
+                <option value="Classical Homeopathy">
+                  Classical Homeopathy
+                </option>
+                <option value="Bio-chemic System">Bio-chemic System</option>
+                <option value="Materia Medica">Materia Medica</option>
+                <option value="Clinical Homeopathy">Clinical Homeopathy</option>
+                <option value="Homeopathic Pharmacy">
+                  Homeopathic Pharmacy
+                </option>
+                <option value="Homeopathy Repertary">Dermatologist</option>
                 <option value="Dermatologist">Dermatologist</option>
                 <option value="Gynecologist">Gynecologist</option>
                 <option value="Pediatricians">Pediatricians</option>

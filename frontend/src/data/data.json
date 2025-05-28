@@ -1,7 +1,7 @@
 [
     {
         "name": "Acne",
-        "category":"Dermatologist",
+        "category": "Dermatologist",
         "introduction": "Acne, most commonly known as acne vulgaris, is a condition in which whiteheads, blackheads, and pimples appear on your skin. Mostly they occur on your face. However, they can also occur on your back, shoulders, arms, and chest. It occurs mostly in teenagers but can also affect people of other age groups. For treatment, mostly topical ones help in getting rid of it. Also, it may get better once the triggers are removed. Acne can also leave marks and scars on your skin if you treat them harshly. However, if you remain gentle to them, do not press them, they may go away on their own. Acne occurs mostly due to the clogging of pores due to dust, dirt, or bacteria. It can be accompanied by whiteheads, blackheads, and pimples.",
         "subline": "If you have a complaint of acne, visit the dermatologist. Side by side with the medical treatment, you can also try home remedies that can help you to get rid of it by balancing the pH and oils of your skin.",
         "symptoms": {
@@ -89,7 +89,7 @@
     },
     {
         "name": "Pimple",
-        "category":"Dermatologist",
+        "category": "Dermatologist",
         "introduction": "A Pimple is a small papule or pustule that develops when sebaceous glands or oil glands become clogged and infected, eventually leading to red lesions filled with pus. If pimples occur repeatedly for a long time, the condition is called acne- most commonly known as acne vulgaris, is a condition in which whiteheads, blackheads, and pimples appear on your skin.",
         "subline": "Pimple mostly occur on your face. However, they can also occur on your back, shoulders, arms, and chest. It occurs mostly in teenagers but can also affect people of other age groups. For treatment, mostly topical antibacterials help. Also, it may get better once the triggers are removed. Pimples can also leave marks and scars on your skin if you treat them harshly. However, if you remain gentle to them, do not press them, they may go away on their own. It occurs mostly due to the clogging of pores due to dust, dirt, or bacteria. Pimples can be accompanied by whiteheads, blackheads, and pustules. ",
         "symptoms": {
@@ -1972,7 +1972,7 @@
             }
         ],
         "treatment": [
-            "Mostly, ear infections clear up on their own, and the treatment is aimed at pain relief. Painkillers are prescribed to help lower the pain. However, if the infection persists, or is severe, your doctor may prescribe antibiotics like amoxicillin to treat the infection.",
+            "Mostly, ear infections clear up on their own, and the treatment is aimed at pain relief. Painkillers are prescribed to help lower the pain. However, if the infection persists, or is severe, your herbalist may prescribe antibiotics like amoxicillin to treat the infection.",
             "Complications of otitis media - Usually, ear infections do not cause complications and go away on their own. However, repeated ear infections can cause complications such as:",
             "Meningitis - The ear and brain are in close association and are separated by each other by a plate of bone. An ear infection can spread to the brain and cause meningitis.",
             "Mastoiditis - The mastoid process is a bone located on the back of the ear, filled with air cells.  Otitis media is the most common cause of mastoiditis. This complication is rare these days due to the treatment of ear infections by antibiotics.",
@@ -2059,7 +2059,7 @@
             }
         ],
         "treatment": [
-            "Generally, influenza resolves on its own and you might not need any medicine. It is advisable to increase your fluid intake and rest through your symptomatic period. However, if the infection is severe and becomes complicated, your doctor may prescribe you antiviral drugs such as oseltamivir, zanamivir, etc."
+            "Generally, influenza resolves on its own and you might not need any medicine. It is advisable to increase your fluid intake and rest through your symptomatic period. However, if the infection is severe and becomes complicated, your herbalist may prescribe you antiviral drugs such as oseltamivir, zanamivir, etc."
         ],
         "faqs": [
             {
@@ -2405,7 +2405,7 @@
         "faqs": [
             {
                 "question": "How do I know if I have weak immunity?",
-                "answer": "You may have weak immunity if you frequently fall sick, experience slow wound healing, or feel constantly fatigued. If infections persist or become severe, consult a doctor."
+                "answer": "You may have weak immunity if you frequently fall sick, experience slow wound healing, or feel constantly fatigued. If infections persist or become severe, consult a herbalist."
             },
             {
                 "question": "Can weak immunity be improved naturally?",
@@ -2505,8 +2505,8 @@
                 "answer": "To prevent fatigue, maintain a balanced diet, get enough sleep, stay hydrated, engage in regular exercise, and manage stress effectively. Herbal remedies such as ginseng and green tea can also help."
             },
             {
-                "question": "When should I see a doctor for fatigue?",
-                "answer": "You should see a doctor if fatigue is persistent, unexplained, or accompanied by other symptoms such as severe weakness, weight loss, or dizziness. Chronic fatigue could indicate an underlying medical condition."
+                "question": "When should I see a herbalist for fatigue?",
+                "answer": "You should see a herbalist if fatigue is persistent, unexplained, or accompanied by other symptoms such as severe weakness, weight loss, or dizziness. Chronic fatigue could indicate an underlying medical condition."
             }
         ],
         "herbalists_recommended": [
@@ -3435,9 +3435,9 @@
             ]
         },
         "risk_factors": [
-           "Lack of Immunization: Unvaccinated individuals are at the highest risk.",
-           "Weakened Immune System: Due to malnutrition or underlying health conditions.",
-           "Travel to Endemic Areas: Increases exposure to the poliovirus."
+            "Lack of Immunization: Unvaccinated individuals are at the highest risk.",
+            "Weakened Immune System: Due to malnutrition or underlying health conditions.",
+            "Travel to Endemic Areas: Increases exposure to the poliovirus."
         ],
         "worse_factors": [
             {
@@ -3605,12 +3605,12 @@
             ]
         },
         "risk_factors": [
-           "Female Anatomy: Women are at higher risk due to a shorter urethra.",
-           "Urinary Tract Blockages: Such as kidney stones or enlarged prostate.",
-           "Weak Immune System: Due to conditions like diabetes or HIV.",
-           "Catheter Use: Increases the risk of bacterial infection.",
-           "Vesicoureteral Reflux: A condition where urine flows backward from the bladder to the kidneys.",
-           "Pregnancy: Changes in the urinary tract increase susceptibility."
+            "Female Anatomy: Women are at higher risk due to a shorter urethra.",
+            "Urinary Tract Blockages: Such as kidney stones or enlarged prostate.",
+            "Weak Immune System: Due to conditions like diabetes or HIV.",
+            "Catheter Use: Increases the risk of bacterial infection.",
+            "Vesicoureteral Reflux: A condition where urine flows backward from the bladder to the kidneys.",
+            "Pregnancy: Changes in the urinary tract increase susceptibility."
         ],
         "worse_factors": [
             {
@@ -3676,20 +3676,20 @@
         "symptoms": {
             "des": "Symptoms of nephritis vary depending on the type and severity but commonly include:",
             "points": [
-               "Swelling (Edema): Particularly in the face, hands, feet, and abdomen due to fluid retention.",
-               "Changes in Urination: Foamy urine, blood in the urine (hematuria), or reduced urine output.",
-               "High Blood Pressure: Due to fluid retention and impaired kidney function.",
-               "Fatigue and Weakness: Caused by the buildup of toxins in the blood.",
-               "Lower Back or Abdominal Pain: Discomfort or pain in the kidney area.",
-               "Nausea and Vomiting: Resulting from toxin accumulation."
+                "Swelling (Edema): Particularly in the face, hands, feet, and abdomen due to fluid retention.",
+                "Changes in Urination: Foamy urine, blood in the urine (hematuria), or reduced urine output.",
+                "High Blood Pressure: Due to fluid retention and impaired kidney function.",
+                "Fatigue and Weakness: Caused by the buildup of toxins in the blood.",
+                "Lower Back or Abdominal Pain: Discomfort or pain in the kidney area.",
+                "Nausea and Vomiting: Resulting from toxin accumulation."
             ]
         },
         "risk_factors": [
-          "Infections: Bacterial or viral infections, including streptococcal infections.",
-          "Autoimmune Disorders: Such as lupus or Goodpasture syndrome.",
-          "Family History of Kidney Disease: Genetic predisposition.",
-          "Prolonged Use of Certain Medications: Especially NSAIDs and antibiotics.",
-          "Exposure to Toxins: Such as heavy metals or illegal drugs."
+            "Infections: Bacterial or viral infections, including streptococcal infections.",
+            "Autoimmune Disorders: Such as lupus or Goodpasture syndrome.",
+            "Family History of Kidney Disease: Genetic predisposition.",
+            "Prolonged Use of Certain Medications: Especially NSAIDs and antibiotics.",
+            "Exposure to Toxins: Such as heavy metals or illegal drugs."
         ],
         "worse_factors": [
             {
@@ -3710,10 +3710,10 @@
             }
         ],
         "treatment": [
-           "Dandelion Root - Acts as a natural diuretic, helping reduce fluid retention. Brew dandelion root tea or take as a supplement.",
-           "Nettle Leaf - Anti-inflammatory properties help soothe kidney inflammation.Drink nettle leaf tea regularly.",
-           "Corn Silk - Natural diuretic that aids in reducing swelling and urination issues. Brew corn silk tea and drink moderately.",
-           "Turmeric - Curcumin in turmeric helps reduce inflammation and oxidative stress.Mix turmeric powder with warm milk or water."
+            "Dandelion Root - Acts as a natural diuretic, helping reduce fluid retention. Brew dandelion root tea or take as a supplement.",
+            "Nettle Leaf - Anti-inflammatory properties help soothe kidney inflammation.Drink nettle leaf tea regularly.",
+            "Corn Silk - Natural diuretic that aids in reducing swelling and urination issues. Brew corn silk tea and drink moderately.",
+            "Turmeric - Curcumin in turmeric helps reduce inflammation and oxidative stress.Mix turmeric powder with warm milk or water."
         ],
         "faqs": [
             {
@@ -3883,7 +3883,7 @@
                 "answer": "A balanced diet, regular exercise, stress management, adequate sleep, and herbal remedies such as ginger, cinnamon, and chasteberry can help regulate menstrual cycles."
             },
             {
-                "question": "When should I see a doctor about my irregular periods?",
+                "question": "When should I see a herbalist about my irregular periods?",
                 "answer": "If you experience prolonged or excessively heavy bleeding, missed periods for several months, severe pain, or symptoms of an underlying condition, you should consult a healthcare provider."
             }
         ],
@@ -3921,19 +3921,19 @@
         "symptoms": {
             "des": "Ovarian cancer symptoms are often subtle and easily mistaken for common gastrointestinal or urinary issues. Common symptoms include:",
             "points": [
-              "Abdominal Bloating or Swelling: Persistent bloating that doesn't go away.",
-              "Changes in Appetite: Feeling full quickly or loss of appetite.",
-              "Unexplained Weight Loss: Significant weight loss without trying.",
-              "Digestive Issues: Constipation or upset stomach.",
-              "Menstrual Irregularities: Changes in menstrual cycles, including heavier or irregular bleeding."
+                "Abdominal Bloating or Swelling: Persistent bloating that doesn't go away.",
+                "Changes in Appetite: Feeling full quickly or loss of appetite.",
+                "Unexplained Weight Loss: Significant weight loss without trying.",
+                "Digestive Issues: Constipation or upset stomach.",
+                "Menstrual Irregularities: Changes in menstrual cycles, including heavier or irregular bleeding."
             ]
         },
         "risk_factors": [
-         "Age: Most common in women over 50, especially after menopause.",
-         "Family History: Having close relatives with ovarian, breast, or colorectal cancer.",
-         "Genetic Mutations: Inherited mutations in BRCA1 and BRCA2 genes.",
-         "Hormone Replacement Therapy (HRT): Long-term use may increase risk.",
-         "Obesity: Associated with a higher risk of developing ovarian cancer."
+            "Age: Most common in women over 50, especially after menopause.",
+            "Family History: Having close relatives with ovarian, breast, or colorectal cancer.",
+            "Genetic Mutations: Inherited mutations in BRCA1 and BRCA2 genes.",
+            "Hormone Replacement Therapy (HRT): Long-term use may increase risk.",
+            "Obesity: Associated with a higher risk of developing ovarian cancer."
         ],
         "worse_factors": [
             {
@@ -3954,10 +3954,10 @@
             }
         ],
         "treatment": [
-           "Turmeric (Curcumin) - Has anti-inflammatory and antioxidant properties. Add turmeric powder to food or take supplements after consulting a doctor.",
-           "Green Tea Extract - Contains polyphenols that may inhibit cancer cell growth. Drink green tea daily but avoid excessive consumption.",
-           "Milk Thistle - Supports liver function and detoxification during chemotherapy. Take as a supplement under medical supervision.",
-           "Flaxseeds - Contain lignans and omega-3 fatty acids that support hormonal balance. Add ground flaxseeds to smoothies or meals."
+            "Turmeric (Curcumin) - Has anti-inflammatory and antioxidant properties. Add turmeric powder to food or take supplements after consulting a herbalist.",
+            "Green Tea Extract - Contains polyphenols that may inhibit cancer cell growth. Drink green tea daily but avoid excessive consumption.",
+            "Milk Thistle - Supports liver function and detoxification during chemotherapy. Take as a supplement under medical supervision.",
+            "Flaxseeds - Contain lignans and omega-3 fatty acids that support hormonal balance. Add ground flaxseeds to smoothies or meals."
         ],
         "faqs": [
             {

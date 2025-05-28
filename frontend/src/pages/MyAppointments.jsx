@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const MyAppointments = () => {
   const { backendUrl, token, getHerbalistsData } = useContext(AppContext); //by using the we call api and display book appt
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [appointments, setAppointments] = useState([]);
   const months = [
     "",
@@ -67,24 +67,6 @@ const MyAppointments = () => {
     }
   };
 
-  // // create arrow function to make payment of appointmnet
-  // const appointmentStripe = async (appointmentId) => {
-
-  //   try {
-
-  //     const {data} = await axios.post(backendUrl + '/api/user/payment-stripe',{appointmentId},{headers:{token}})
-
-  //     if (data.success) {
-  //       console.log(data.order);
-
-  //     }
-
-  //   } catch (error) {
-
-  //   }
-
-  // }
-
   useEffect(() => {
     if (token) {
       getUserAppointments();
@@ -130,7 +112,9 @@ const MyAppointments = () => {
                 {!item.cancelled && !item.payment && (
                   <button
                     className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300"
-                    onClick={() => navigate(`/checkout/${item._id}/${item.amount}`)}
+                    onClick={() =>
+                      navigate(`/checkout/${item._id}/${item.amount}`)
+                    }
                   >
                     Pay Online
                   </button>
@@ -151,14 +135,13 @@ const MyAppointments = () => {
                 {/* {!item.isCompleted && <button className='sm:min-w-48 py-2 border border-green-500 rounded text-green-500' >Completed</button> } */}
 
                 {item.payment && (
-  <button
-    className="text-sm text-green-500 text-center sm:min-w-48 py-2 border rounded hover:bg-green-600 hover:text-white transition-all duration-300"
-    onClick={() => navigate(`/chat/${item._id}`)}
-  >
-    Chat with Herbalist
-  </button>
-)}
-
+                  <button
+                    className="text-sm text-green-500 text-center sm:min-w-48 py-2 border rounded hover:bg-green-600 hover:text-white transition-all duration-300"
+                    onClick={() => navigate(`/chat/${item._id}`)}
+                  >
+                    Chat with Herbalist
+                  </button>
+                )}
               </div>
             </div>
           ))}

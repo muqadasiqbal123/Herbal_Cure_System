@@ -2,19 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ViewCategories = () => {
-  // const {diseases} = useParams()
-  // const [filter, setFilter] = useState([])
-  // const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState("");
-  // const applyFilter = () =>{
-  //   setFilter(filter)
-  // }
 
-  // useEffect(()=>{
-  // applyFilter()
-  // },[diseases])
-
-  // Create array of all diseases
   const diseases = [
     { name: "Acne", category: "Skin Disorder" },
     { name: "Pimple", category: "Skin Disorder" },
@@ -77,7 +66,7 @@ const ViewCategories = () => {
   ];
 
   // Filter diseases based on search query
-  const filteredDiseases = diseases.filter(disease =>
+  const filteredDiseases = diseases.filter((disease) =>
     disease.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -95,11 +84,11 @@ const ViewCategories = () => {
       {/* Header */}
       <h1 className="text-3xl font-bold mb-4">Find a Herbalist by Disease</h1>
       <p className="text-gray-600 mb-6">
-        You can find a Herbalist most reliable and verified doctor in Pakistan
-        on InstaCare.Pk. You can now book a service offered by a doctor at
-        affordable prices. You can find a service, view online booking details,
-        reviews, fee, address, and other information. Below are the available
-        specialties.
+        You can find a Herbalist most reliable and verified herbalist in
+        Pakistan on herbalcuresystem.com. You can now book a service offered by
+        a herbalist at affordable prices. You can find a service, view online
+        booking details, reviews, fee, address, and other information. Below are
+        the available specialties.
       </p>
 
       {/* Search Box */}
@@ -118,45 +107,27 @@ const ViewCategories = () => {
 
       {/* Diseases */}
       <div className="diseases space-y-8">
-        {Object.entries(groupedDiseases).map(([category, diseases]) => (
-          diseases.length > 0 && (
-            <div className="disease-item" key={category}>
-              <h2 className="text-2xl font-semibold mb-4">{category}</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {diseases.map((disease) => (
-                  <div className="disease" key={disease.name}>
-                    <a href={`/view-categories/${disease.name}`}>
-                      <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800">
-                        <label>{disease.name}</label>
-                      </div>
-                    </a>
-                  </div>
-                ))}
+        {Object.entries(groupedDiseases).map(
+          ([category, diseases]) =>
+            diseases.length > 0 && (
+              <div className="disease-item" key={category}>
+                <h2 className="text-2xl font-semibold mb-4">{category}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {diseases.map((disease) => (
+                    <div className="disease" key={disease.name}>
+                      <a href={`/view-categories/${disease.name}`}>
+                        <div className="box-general flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:bg-primary hover:text-white text-gray-800">
+                          <label>{disease.name}</label>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          )
-        ))}
+            )
+        )}
       </div>
     </div>
-
-    // <div>
-    //      <p className='text-gray-600'>Herbalists commonly treat a variety of health conditions using natural remedies derived from plants, herbs, and other organic materials. Below is a list of some of the most common diseases and conditions that can be treated by herbalists.</p>
-    //      <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
-    //       <div className='sm:grid grid-flow-col flex-row gap-9 text-sm text-gray-600' >
-    //         <p onClick={()=> navigate('Skin Disorders')} className= {`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`} >Skin Disorders</p>
-    //         <p onClick={()=>navigate('Hair Issues')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer h-[9vh]`}>Hair Issues</p>
-    //         <p  onClick={()=>navigate('Digestive Problems')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`} >Digestive Problems</p>
-    //         <p  onClick={()=>navigate('Weight Management')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`}>Weight Management</p>
-    //         <p  onClick={()=>navigate('Teeth Problem')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`}>Teeth Problem</p>
-    //         <p  onClick={()=>navigate('Stress Disorder')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`}>Stress Disorder</p>
-    //       </div>
-    //       <div>
-    //         {
-    //           filter.map(setFilter)
-    //         }
-    //       </div>
-    //      </div>
-    // </div>
   );
 };
 
