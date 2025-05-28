@@ -29,7 +29,7 @@ const io = new Server(server, {
       "http://localhost:5173",
       "http://localhost:5174",
       "https://herbal-cure-system-admin.vercel.app",
-      "https://herbal-cure-system-client.vercel.app",
+      "https://herbal-cure-system.vercel.app",
     ], // Allow all origins (change this for production)
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   },
@@ -43,7 +43,7 @@ app.use(
       "http://localhost:5173",
       "http://localhost:5174",
       "https://herbal-cure-system-admin.vercel.app",
-      "https://herbal-cure-system-client.vercel.app",
+      "https://herbal-cure-system.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
