@@ -9,7 +9,7 @@ import MyProfile from "./pages/MyProfile";
 import Appointment from "./pages/Appointment";
 import MyAppointments from "./pages/MyAppointments";
 import ViewCategories from "./pages/ViewCategories";
-import Header from "./Components/header";
+import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
