@@ -59,7 +59,7 @@ export const assets = {
 
 export const specialityData = [
   {
-    speciality: "General_physician",
+    speciality: "General physician",
     image: General_physician,
   },
   {
