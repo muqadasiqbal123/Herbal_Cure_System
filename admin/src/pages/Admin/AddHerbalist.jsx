@@ -6,6 +6,7 @@ import axios from "axios";
 
 const AddHerbalist = () => {
   const [herbImg, setHerbImg] = useState(false);
+  const [certificateFile, setCertificateFile] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +32,10 @@ const AddHerbalist = () => {
       const formData = new FormData();
 
       formData.append("image", herbImg);
+      if (certificateFile) {
+        formData.append("certificate", certificateFile);
+      }
+
       formData.append("name", name);
       formData.append("email", email);
       formData.append("password", password);
@@ -173,6 +178,30 @@ const AddHerbalist = () => {
                 placeholder="fees"
                 required
               />
+            </div>
+            <div className="flex items-center gap-4 mb-8 text-gray-500">
+              <label htmlFor="certificate-file" className="cursor-pointer">
+                <div className="w-16 h-16 bg-gray-100 rounded flex items-center justify-center text-sm">
+                  📄
+                </div>
+              </label>
+
+              <input
+                onChange={(e) => setCertificateFile(e.target.files[0])}
+                type="file"
+                id="certificate-file"
+                hidden
+                accept=".pdf,.jpg,.jpeg,.png"
+              />
+
+              <div>
+                <p className="text-sm">Upload Certificate (PDF/Image)</p>
+                {certificateFile && (
+                  <p className="text-xs text-green-600">
+                    {certificateFile.name}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
           {/* ---------Add herbalist detail for right side---------- */}

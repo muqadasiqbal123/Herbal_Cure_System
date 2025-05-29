@@ -6,6 +6,7 @@ const herbalistSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     image: { type: String, required: true },
+    certificate: { type: String, required: true },
     speciality: { type: String, required: true },
     degree: { type: String, required: true },
     experience: { type: String, required: true },

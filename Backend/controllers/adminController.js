@@ -20,7 +20,8 @@ const addHerbalist = async (req, res) => {
       fees,
       address,
     } = req.body;
-    const imageFile = req.file;
+    const imageFile = req.files?.image?.[0];
+    const certificateFile = req.files?.certificate?.[0];
 
     // checking for all data to add herbalist
     if (
@@ -33,7 +34,8 @@ const addHerbalist = async (req, res) => {
       !about ||
       !fees ||
       !address ||
-      !imageFile
+      !imageFile ||
+      !certificateFile
     ) {
       return res.json({ success: false, message: "Missing Details" });
     }
@@ -64,11 +66,20 @@ const addHerbalist = async (req, res) => {
     });
     const imageUrl = imageUpload.secure_url;
 
+    const certificateUpload = await cloudinary.uploader.upload(
+      certificateFile.path,
+      {
+        resource_type: "auto", // auto detects PDF, image, etc.
+      }
+    );
+    const certificateUrl = certificateUpload.secure_url;
+
     const herbalistData = {
       name,
       email,
       password: hashedPassword,
       image: imageUrl,
+      certificate: certificateUrl,
       speciality,
       degree,
       experience,
