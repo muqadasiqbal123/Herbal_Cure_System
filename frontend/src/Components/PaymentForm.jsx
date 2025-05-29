@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
+import {
+  useStripe,
+  useElements,
+  CardNumberElement,
+  CardExpiryElement,
+  CardCvcElement,
+} from "@stripe/react-stripe-js";
 import { useNavigate, useParams } from "react-router-dom";
 
 const PaymentForm = () => {
@@ -10,15 +16,18 @@ const PaymentForm = () => {
   const navigate = useNavigate();
   const [cardHolder, setCardHolder] = useState("");
 
-  const updateAppointmentAsPaid = async () => {
+  const updateAppointmentAsPaid = async (paymentIntentId) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/payment/update-appointment/${_id}`,
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/payment/update-appointment/${_id}`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify({ paymentIntentId }),
         }
       );
 
@@ -65,7 +74,9 @@ const PaymentForm = () => {
         alert(result.error.message);
       } else if (result.paymentIntent.status === "succeeded") {
         alert("Payment Successful!");
-        updateAppointmentAsPaid();
+        console.log("Payment Intent:", result.paymentIntent);
+        // Update appointment as paid
+        updateAppointmentAsPaid(result.paymentIntent.id);
       }
     } catch (error) {
       alert("Payment failed. Please try again.");
@@ -84,7 +95,9 @@ const PaymentForm = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Card Holder Name */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-600">Card Holder Name</label>
+            <label className="block mb-1 text-sm font-medium text-gray-600">
+              Card Holder Name
+            </label>
             <input
               type="text"
               value={cardHolder}
@@ -97,7 +110,9 @@ const PaymentForm = () => {
 
           {/* Card Number Field */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-600">Card Number</label>
+            <label className="block mb-1 text-sm font-medium text-gray-600">
+              Card Number
+            </label>
             <div className="p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300">
               <CardNumberElement className="w-full" />
             </div>
@@ -106,14 +121,18 @@ const PaymentForm = () => {
           {/* Expiry Date & CVC Fields */}
           <div className="flex space-x-4">
             <div className="w-1/2">
-              <label className="block mb-1 text-sm font-medium text-gray-600">Expiry Date</label>
+              <label className="block mb-1 text-sm font-medium text-gray-600">
+                Expiry Date
+              </label>
               <div className="p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300">
                 <CardExpiryElement className="w-full" />
               </div>
             </div>
 
             <div className="w-1/2">
-              <label className="block mb-1 text-sm font-medium text-gray-600">CVC</label>
+              <label className="block mb-1 text-sm font-medium text-gray-600">
+                CVC
+              </label>
               <div className="p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300">
                 <CardCvcElement className="w-full" />
               </div>
