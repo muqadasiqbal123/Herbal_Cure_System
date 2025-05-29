@@ -1540,7 +1540,7 @@
         ]
     },
     {
-        "name": "AnxietyDisorder",
+        "name": "Anxiety-Disorder",
         "introduction": "Anxiety is a natural feeling of anxiousness and fear in response to stress. We all feel it in different stages of our life, but it is temporary. Sometimes it can become worse that it hastily affects your life.",
         "subline": "In anxiety disorder, fear and restlessness are not temporary. It gets worse by the time and affects the person’s health so much that they become home-bound, or even they do not come out from their rooms. Those who suffer from anxiety attacks find it so difficult to deal with them. But along with supportive and symptomatic treatment, one can control the symptoms of anxiety.",
         "symptoms": {
@@ -1636,7 +1636,7 @@
         ]
     },
     {
-        "name": "StressDisorder",
+        "name": "Stress-Disorder",
         "introduction": "Acute stress disorder is often a temporary condition that occurs after any traumatic event that causes psychological distress. The symptoms of acute stress disorder may remain from 3 to 30 days. However, if they last longer than that, you must visit a healthcare provider.",
         "subline": "",
         "symptoms": {
