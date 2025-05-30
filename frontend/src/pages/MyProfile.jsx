@@ -186,7 +186,7 @@ const MyProfile = () => {
                   setUserData((prev) => ({ ...prev, dob: e.target.value }))
                 }
                 value={userData.dob}
-                max={new Date().toISOString().split("T")[0]} // 👈 prevents selecting future dates
+                max={new Date().toISOString().split("T")[0]} // prevents selecting future dates
               />
             ) : (
               <p className="text-gray-400">{userData.dob}</p>
