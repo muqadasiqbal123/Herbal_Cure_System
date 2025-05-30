@@ -1,5 +1,10 @@
 import express from "express";
-import { getMessages, getUserChats, getHerbalistChats, getAdminChats } from "../controllers/ChatController.js";
+import {
+  getMessages,
+  getUserChats,
+  getHerbalistChats,
+  getAdminChats,
+} from "../controllers/ChatController.js";
 import authUser from "../middlewares/authUser.js";
 import authHerbalist from "../middlewares/authHerbalist.js";
 import authAdmin from "../middlewares/authAdmin.js";
@@ -16,6 +21,6 @@ router.get("/user/chats", authUser, getUserChats);
 router.get("/herbalist/chats", authHerbalist, getHerbalistChats);
 
 // Get all chats for admin
-router.get("/admin/chats", authAdmin, getAdminChats);
+router.get("/admin/chats", getAdminChats);
 
 export default router;
