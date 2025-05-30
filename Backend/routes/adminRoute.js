@@ -25,9 +25,9 @@ adminRouter.post(
 adminRouter.post("/login", loginAdmin);
 adminRouter.post("/all-herbalists", authAdmin, allHerbalists);
 adminRouter.post("/change-availability", authAdmin, changeAvailability);
-adminRouter.get("/appointments", authAdmin, appointmentsAdmin);
+adminRouter.get("/appointments", appointmentsAdmin);
 adminRouter.post("/cancel-appointment", authAdmin, appointmentCancel);
 adminRouter.get("/dashboard", authAdmin, adminDashboard);
-adminRouter.get("/appointment/:id", authAdmin, getAppointmentById);
+adminRouter.get("/appointment/:id", getAppointmentById);
 
 export default adminRouter;
